@@ -1,0 +1,16 @@
+{
+	"name": "sequencer",
+	"version": "1.0.0",
+	"description": "A library that helps you handle promises in a serial format",
+	"main": "main.js",
+	"scripts": {
+		"test": "nyc mocha ./test/integration/*.spec.js ./test/unit/**/*.spec.js --timeout 10000"
+	},
+	"author": "Sikiru Moshood",
+	"license": "MIT",
+	"dependencies": {},
+	"devDependencies": {
+		"chai": "^4.2.0",
+		"nyc": "^14.1.1"
+	}
+}
