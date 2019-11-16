@@ -113,7 +113,6 @@ describe('UNIT TEST FOR UTILS MODULE', () => {
             chai.expect(results).to.be.an('array');
             chai.expect(results.length).to.equal(4);
         } catch (e) {
-            console.log('GOT HERE: ', e.message);
             chai.expect(e.message).to.not.equal('null');
         }
     });
