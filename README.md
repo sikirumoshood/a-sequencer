@@ -40,48 +40,58 @@ sq.runSequence([ promise1, promise2, promise3 ])
 
 > Sequencer( options )
 
-Takes in optional ```javascript options``` object as parameter.
+Takes in optional ```options``` object as parameter.
 - options (optional) properties
-  _useArgs_ (boolean): true when the supplied methods take in parameters.
-  _mixed_ (boolean): true when the supplied methods may take in parameters or NOT.
+  ```_useArgs_``` (boolean): true when the supplied methods take in parameters.
+  ```_mixed_``` (boolean): true when the supplied methods may take in parameters or NOT.
 
-By default it is set to ```javascript mixed:false, useArgs:false }```.
+By default it is set to ```{ mixed:false, useArgs:false }```.
 
 
 ### Methods
 
-> getMixed()
-Returns ```javascript options.useArgs``` boolean value.
+> getMixed
 
+Returns ```options.useArgs``` boolean value.
 
+> getUseArgs
 
-> getUseArgs ()
-Returns ```javascript options.mixed``` boolean value.
+Returns ```options.mixed``` boolean value.
 
 
 > setMixed( value )
-Takes in ```javascript value``` as boolean.
-Sets ```javascript options.mixed ``` to ```javascript value```
+
+Takes in ```value``` as boolean.
+Sets ```javascript options.mixed ``` to ```value```
 
 > setUseArgs( value )
-Takes in ```javascript value``` as boolean.
-Sets ```javascript options.useArgs ``` to ```javascript value```
+
+Takes in ```value``` as boolean.
+Sets ```options.useArgs ``` to ```value```
 
 
 > runSequence([ func1, func2, ...])
 
-Returns ```javascript array``` of  containing results of each function in order.
+Returns ```array``` containing results of each function in order.
+
 - When an ```javascript error```  occurs during execution, the task is terminated immediately.
 
-
 - When _useArgs_ is set to```javascript true``` then method must be of the form:
-  ```javascript  runSequence( [{name:() => Promise.resolve('Awesome'), args:[arg1, arg2,... ]} ])```
+  
+```javascript
+   runSequence( [{name:() => Promise.resolve('Awesome'), args:[arg1, arg2,... ]} ])
+```
+
    
-   _name_ is the function name or the Function itself.
+   ```name``` is the function name or the Function itself.
 
-   _args_ is the array of arguments to be supplied to the Function.
+   ```args``` is the array of arguments to be supplied to the Function.
 
 
-- When _useArgs_ is set to```javascript false ``` then method must be of the form:
-  ```javascript  runSequence( [() => Promise.resolve('Method_1'), () => Promise.resolve('Method_2') ])``` 
+- When ```useArgs``` is set to ```javascript 
+false``` then method must be of the form:
+  ```javascript 
+
+runSequence( [() => Promise.resolve('Method_1'), () => Promise.resolve('Method_2') ])
+``` 
    
