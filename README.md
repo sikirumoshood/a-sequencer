@@ -42,8 +42,9 @@ sq.runSequence([ promise1, promise2, promise3 ])
 
 Takes in optional ```options``` object as parameter.
 - ```options``` (optional) properties
-  ```useArgs``` (boolean): ```true``` when the supplied methods take in parameters.
-  ```mixed``` (boolean): ```true``` when the supplied methods may take in parameters or NOT.
+  ```useArgs``` (boolean): When set to ```true``` implies supplied methods take in parameters.
+
+  ```mixed``` (boolean): When set to ```true``` implies supplied methods may take in parameters or NOT.
 
 By default it is set to 
 ```{ mixed:false, useArgs:false }```.
