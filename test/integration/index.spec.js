@@ -31,6 +31,20 @@ describe('INTEGRATION TEST FOR SEQUENCER', () => {
         chai.expect(SQ.getUseArgs()).to.equal(true);
     });
 
+    it('Should FAIL TO UPDATE useArgs', () => {
+        const SQ = new Sequencer();
+        chai.expect(SQ.getUseArgs()).to.equal(false);
+        SQ.setUseArgs('');
+        chai.expect(SQ.getUseArgs()).to.equal(false);
+    });
+
+    it('Should FAIL TO UPDATE mixedArgs', () => {
+        const SQ = new Sequencer();
+        chai.expect(SQ.getMixed()).to.equal(false);
+        SQ.setMixed('1');
+        chai.expect(SQ.getMixed()).to.equal(false);
+    });
+
     it('Should UPDATE mixedArgs', () => {
         const SQ = new Sequencer();
         chai.expect(SQ.getMixed()).to.equal(false);
