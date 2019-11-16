@@ -4,6 +4,7 @@
 	"description": "A library that helps you handle promises in a serial format",
 	"main": "main.js",
 	"scripts": {
+		"app": "node app",
 		"test": "nyc mocha ./test/integration/*.spec.js ./test/unit/**/*.spec.js --timeout 10000"
 	},
 	"author": "Sikiru Moshood",

@@ -17,7 +17,13 @@ const promise3 = () =>
     });
 
 // Run sequence NO ARGS
-sq.runSequence([ promise1, promise2, promise3 ]).then((results) => results.forEach((result) => console.log(result)));
+sq
+    .runSequence([ promise1, promise2, promise3 ])
+    .then((results) =>
+        results.forEach((result) =>
+            console.log(result, '\n-----------------------------------------------------------------------------\n')
+        )
+    );
 
 const pa1 = (firstname, surname, salary) =>
     new Promise((resolve, reject) => {
@@ -35,3 +41,26 @@ const pa3 = (a, b) =>
     });
 
 // Run sequence WITH ARGS
+sq.setUseArgs(true);
+sq
+    .runSequence([
+        { name: pa1, args: [ 'firstname', 'surname', 25000 ] },
+        { name: pa2, args: [ 10000, 2 ] },
+        { name: pa3, args: [ 50, 3 ] }
+    ])
+    .then((results) =>
+        results.forEach((result) =>
+            console.log(result, '\n-----------------------------------------------------------------------------\n')
+        )
+    );
+
+// Run sequence WITH MIXED set
+
+sq.setMixed(true);
+sq
+    .runSequence([ promise3, { name: pa1, args: [ 'firstname', 'surname', 25000 ] } ])
+    .then((results) =>
+        results.forEach((result) =>
+            console.log(result, '\n-----------------------------------------------------------------------------\n')
+        )
+    );
