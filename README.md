@@ -41,7 +41,7 @@ sq.runSequence([ promise1, promise2, promise3 ])
 > Sequencer( options )
 
 Takes in optional ```options``` object as parameter.
-- options (optional) properties
+- ```options``` (optional) properties
   ```useArgs``` (boolean): ```true``` when the supplied methods take in parameters.
   ```mixed``` (boolean): ```true``` when the supplied methods may take in parameters or NOT.
 
@@ -63,12 +63,8 @@ Returns ```options.mixed``` boolean value.
 > setMixed( value )
 
 Takes in ```value``` as boolean.
-Sets 
-```javascript 
+Sets ```options.mixed``` to ```value```
 
-options.mixed 
-
-``` to ```value```
 
 > setUseArgs( value )
 
