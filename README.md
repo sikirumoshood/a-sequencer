@@ -42,10 +42,11 @@ sq.runSequence([ promise1, promise2, promise3 ])
 
 Takes in optional ```options``` object as parameter.
 - options (optional) properties
-  ```_useArgs_``` (boolean): true when the supplied methods take in parameters.
-  ```_mixed_``` (boolean): true when the supplied methods may take in parameters or NOT.
+  ```useArgs``` (boolean): ```true``` when the supplied methods take in parameters.
+  ```mixed``` (boolean): ```true``` when the supplied methods may take in parameters or NOT.
 
-By default it is set to ```{ mixed:false, useArgs:false }```.
+By default it is set to 
+```{ mixed:false, useArgs:false }```.
 
 
 ### Methods
@@ -62,36 +63,41 @@ Returns ```options.mixed``` boolean value.
 > setMixed( value )
 
 Takes in ```value``` as boolean.
-Sets ```javascript options.mixed ``` to ```value```
+Sets 
+```javascript 
+
+options.mixed 
+
+``` to ```value```
 
 > setUseArgs( value )
 
 Takes in ```value``` as boolean.
-Sets ```options.useArgs ``` to ```value```
+Sets ```options.useArgs``` to ```value```
 
 
 > runSequence([ func1, func2, ...])
 
 Returns ```array``` containing results of each function in order.
 
-- When an ```javascript error```  occurs during execution, the task is terminated immediately.
+- When an ```error```  occurs during execution, the task is terminated immediately.
 
-- When _useArgs_ is set to```javascript true``` then method must be of the form:
+- When ```useArgs``` is set to```true``` then method must be of the form:
   
 ```javascript
    runSequence( [{name:() => Promise.resolve('Awesome'), args:[arg1, arg2,... ]} ])
 ```
-
+- Where:
    
    ```name``` is the function name or the Function itself.
 
    ```args``` is the array of arguments to be supplied to the Function.
 
 
-- When ```useArgs``` is set to ```javascript 
-false``` then method must be of the form:
-  ```javascript 
-
+- When ```useArgs``` is set to ```false``` then method must be of the form:
+  
+```javascript 
 runSequence( [() => Promise.resolve('Method_1'), () => Promise.resolve('Method_2') ])
+
 ``` 
    
