@@ -24,6 +24,20 @@ describe('INTEGRATION TEST FOR SEQUENCER', () => {
         chai.expect(SQ.getMixed()).to.equal(true);
     });
 
+    it('Should UPDATE useArgs', () => {
+        const SQ = new Sequencer();
+        chai.expect(SQ.getUseArgs()).to.equal(false);
+        SQ.setUseArgs(true);
+        chai.expect(SQ.getUseArgs()).to.equal(true);
+    });
+
+    it('Should UPDATE mixedArgs', () => {
+        const SQ = new Sequencer();
+        chai.expect(SQ.getMixed()).to.equal(false);
+        SQ.setMixed(true);
+        chai.expect(SQ.getMixed()).to.equal(true);
+    });
+
     it('Should CALL processPromisesWithArgs', async() => {
         const SQ = new Sequencer({ useArgs: true });
         const results = await SQ.runSequence([ { name: (arg) => Promise.resolve(arg), args: [ 'First' ] } ]);
