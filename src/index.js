@@ -27,6 +27,18 @@ function Sequencer(options = {}) {
     this.getMixed = function() {
         return _options.mixed;
     };
+
+    this.setUseArgs = function(value) {
+        if (typeof value === 'boolean') {
+            _options.useArgs = value;
+        }
+    };
+
+    this.setMixed = function(value) {
+        if (typeof value === 'boolean') {
+            _options.mixed = value;
+        }
+    };
 }
 
 module.exports = Sequencer;
