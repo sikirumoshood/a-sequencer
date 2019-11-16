@@ -4,7 +4,7 @@ Sequencer is a light-weight promise based library  for executing methods that re
 # Installation Guide
 To install sequencer, run the following in your terminal:
 
-> npm i sequencer
+> npm i sequencer --save
 
 # Basic Usage Sample Code
 
