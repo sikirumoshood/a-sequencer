@@ -1,4 +1,4 @@
-const { processPromisesWithArgs, processPromisesWithNoArgs } = require('./util/utils');
+const { processPromisesWithArgs, processPromisesWithNoArgs, processPromises } = require('./util/utils');
 
 function Sequencer(options = {}) {
     const _options = options;
@@ -6,16 +6,26 @@ function Sequencer(options = {}) {
         _options.useArgs = false;
     }
 
+    if (!_options.mixed || typeof _options.mixed !== 'boolean') {
+        _options.mixed = false;
+    }
+
     this.runSequence = function(promises) {
-        if (_options.useArgs) {
+        if (_options.mixed) {
+            return processPromises(promises);
+        } else if (_options.useArgs) {
             return processPromisesWithArgs(promises);
-        } else {
+        } else if (!_options.useArgs) {
             return processPromisesWithNoArgs(promises);
         }
     };
 
     this.getUseArgs = function() {
         return _options.useArgs;
+    };
+
+    this.getMixed = function() {
+        return _options.mixed;
     };
 }
 
