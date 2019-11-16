@@ -15,7 +15,7 @@ function Sequencer(options = {}) {
             return processPromises(promises);
         } else if (_options.useArgs) {
             return processPromisesWithArgs(promises);
-        } else if (!_options.useArgs) {
+        } else {
             return processPromisesWithNoArgs(promises);
         }
     };
