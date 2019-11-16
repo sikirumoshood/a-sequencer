@@ -14,7 +14,11 @@ async function processPromisesWithArgs(promises) {
 
     for (let i = 0; i < promises.length; ++i) {
         if (isExpectedObject(promises[i])) {
-            results.push(await promises[i].name.apply(undefined, promises[i].args));
+            try {
+                results.push(await promises[i].name.apply(undefined, promises[i].args));
+            } catch (e) {
+                return Promise.reject(new Error(e.message));
+            }
         } else {
             return Promise.reject(new Error('Object of form { name:[Func], args: [Array] } expected'));
         }
@@ -35,7 +39,11 @@ async function processPromisesWithNoArgs(promises) {
 
     for (let i = 0; i < promises.length; ++i) {
         if (isFunction(promises[i])) {
-            results.push(await promises[i]());
+            try {
+                results.push(await promises[i]());
+            } catch (e) {
+                return Promise.reject(new Error(e.message));
+            }
         } else {
             return Promise.reject(new Error('Array of function(s) that returns a promise was expected'));
         }
