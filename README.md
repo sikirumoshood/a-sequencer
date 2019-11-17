@@ -138,7 +138,7 @@ Returns ```array``` containing results of each function in order.
    ```args``` is the array of arguments to be supplied to the Function.
 
 
-- When ```useArgs``` is set to ```false``` then method must be of the form:
+- When ```useArgs``` property is set to ```false``` and ```mixed``` property is set to ```false``` then method must be of the form:
   
 ```javascript 
 runSequence( [() => Promise.resolve('First Function'), () => Promise.resolve('Second Function') ])
