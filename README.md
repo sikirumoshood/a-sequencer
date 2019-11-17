@@ -58,7 +58,7 @@ sq.runSequence([
         { name: func2, args: [ 10000, 2 ] },
         { name: func3, args: [ 50, 3 ] }
     ])
-    .then( results => console.log(results)); // [ {firstname: 'JOHN', surname: 'JOE', salary: 2000}, 5000, 150 ]
+    .then( results => console.log(results)); // [ {firstname: 'JOHN', surname: 'JOE', salary: 2500}, 5000, 150 ]
 ```
 
 ### Running mixed functions
@@ -77,7 +77,7 @@ const funct2 = (firstname, surname, salary) => new Promise((resolve, reject) => 
     });
 
 sq.runSequence([ funct1, { name: funct2, args: [ 'John', 'Doe', 25000 ] }])
-      .then( results => console.log(results)); // [ 'FIRST PROMISE', {firstname: 'JOHN', surname: 'JOE', salary: 2000}]
+      .then( results => console.log(results)); // [ 'FIRST PROMISE', {firstname: 'JOHN', surname: 'JOE', salary: 2500}]
     
 ```
 
