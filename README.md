@@ -1,16 +1,16 @@
-# Sequencer
-Sequencer is a light-weight promise based library  for executing methods that return promises. It ensures the methods are executed in the order they were provided. It allows methods that return promises to be chained in a manner that either all runs to completion (in order) or the execution gets terminated. Sequencer supports promise returning methods that take arguments and those without arguments.
+# A-sequencer
+A-sequencer is a light-weight promise based library  for executing methods that return promises. It ensures the methods are executed in the order they were provided. It allows methods that return promises to be chained in a manner that either all runs to completion (in order) or the execution gets terminated. It supports promise returning methods that take arguments and those without arguments.
 
 # Installation Guide
-To install sequencer, run the following in your terminal:
+To install a-sequencer, run the following in your terminal:
 
-> npm install sequencer --save
+> npm i a-sequencer --save
 
 # Basic Usage
 
 ```javascript
 
-const Sequencer = require('sequencer');
+const Sequencer = require('a-sequencer');
 
 //Takes in optional <options> object as parameter. defaults to {useArgs:false, mixed:false}
 const sq = new Sequencer();
