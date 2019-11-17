@@ -6,7 +6,7 @@ To install sequencer, run the following in your terminal:
 
 > npm install sequencer --save
 
-# Basic Usage Sample Code
+# Basic Usage
 
 ```javascript
 
@@ -14,19 +14,19 @@ const Sequencer = require('sequencer');
 //Takes in optional <options> object as parameter. defaults to {useArgs:false, mixed:false}
 const sq = new Sequencer();
 
-const promise1 = () => new Promise((resolve, reject) => {
+const funct1 = () => new Promise((resolve, reject) => {
         setTimeout(() => resolve('FIRST PROMISE'), 2000);
     });
 
-const promise2 = () => new Promise((resolve, reject) => {
+const funct2 = () => new Promise((resolve, reject) => {
         setTimeout(() => resolve('SECOND PROMISE'), 1000);
     });
 
-const promise3 = () => new Promise((resolve, reject) => {
+const funct3 = () => new Promise((resolve, reject) => {
         setTimeout(() => resolve('THIRD PROMISE'), 500);
     });
 
-sq.runSequence([ promise1, promise2, promise3 ])
+sq.runSequence([ funct1, funct2, funct3 ])
    .then((results) => results.forEach((result) =>
             console.log(result)
         )
