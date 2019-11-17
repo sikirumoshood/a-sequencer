@@ -1,6 +1,6 @@
 {
 	"name": "a-sequencer",
-	"version": "1.0.0",
+	"version": "0.0.0",
 	"description": "A library that helps you handle promises in a serial format",
 	"main": "main.js",
 	"scripts": {
