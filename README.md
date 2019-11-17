@@ -95,7 +95,7 @@ Returns ```array``` containing results of each function in order.
 - When ```useArgs``` is set to ```false``` then method must be of the form:
   
 ```javascript 
-runSequence( [() => Promise.resolve('Method_1'), () => Promise.resolve('Method_2') ])
+runSequence( [() => Promise.resolve('First Function'), () => Promise.resolve('Second Function') ])
 
 ``` 
    
