@@ -8,6 +8,7 @@ To install a-sequencer, run the following in your terminal:
 
 # Basic Usage
 
+### Running functions that do not take arguments
 ```javascript
 
 const Sequencer = require('a-sequencer');
@@ -28,11 +29,58 @@ const funct3 = () => new Promise((resolve, reject) => {
     });
 
 sq.runSequence([ funct1, funct2, funct3 ])
-   .then((results) => results.forEach((result) =>
-            console.log(result)
-        )
-    );
+   .then( results => console.log(results) ); // ['FIRST PROMISE', 'SECOND PROMISE', 'THIRD PROMISE']
 
+```
+
+### Running functions that take arguments
+
+```javascript
+   
+   const Sequencer = require('a-sequencer');
+
+   const sq = new Sequencer({useArgs:true});
+   
+   const func1 = (firstname, surname, salary) => new Promise((resolve, reject) => {
+        setTimeout(() => resolve({ firstname: firstname.toUpperCase(), surname: surname.toUpperCase(), salary }), 2000);
+    });
+
+const func2 = (a, b) => new Promise((resolve, reject) => {
+        setTimeout(() => resolve(a / b), 1000);
+    });
+
+const funct3 = (a, b) => new Promise((resolve, reject) => {
+        setTimeout(() => resolve(a * b), 500);
+    });
+
+
+   sq.runSequence([
+        { name: func1, args: [ 'John', 'Doe', 25000 ] },
+        { name: func2, args: [ 10000, 2 ] },
+        { name: func3, args: [ 50, 3 ] }
+    ])
+    .then( results => console.log(results)); // [ {firstname: 'JOHN', surname: 'JOE', salary: 2000}, 5000, 150 ]
+```
+
+### Running mixed functions
+
+```javascript
+   
+   const Sequencer = require('a-sequencer');
+
+   const sq = new Sequencer({mixed:true});
+   
+   const funct1 = () => new Promise((resolve, reject) => {
+        setTimeout(() => resolve('FIRST PROMISE'), 1000);
+    });
+   
+   const funct2 = (firstname, surname, salary) => new Promise((resolve, reject) => {
+        setTimeout(() => resolve({ firstname: firstname.toUpperCase(), surname: surname.toUpperCase(), salary }), 2000);
+    });
+
+   sq.runSequence([ funct1, { name: funct2, args: [ 'John', 'Doe', 25000 ] }])
+      .then( results => console.log(results)); // [ 'FIRST PROMISE', {firstname: 'JOHN', surname: 'JOE', salary: 2000}]
+    
 ```
 
 # API Documentation
