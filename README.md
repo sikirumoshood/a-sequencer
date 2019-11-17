@@ -11,6 +11,7 @@ To install sequencer, run the following in your terminal:
 ```javascript
 
 const Sequencer = require('sequencer');
+
 //Takes in optional <options> object as parameter. defaults to {useArgs:false, mixed:false}
 const sq = new Sequencer();
 
