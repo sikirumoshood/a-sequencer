@@ -88,7 +88,7 @@ sq.runSequence([ funct1, { name: funct2, args: [ 'John', 'Doe', 25000 ] }])
 > Sequencer( options )
 
 Takes in optional ```options``` object as parameter.
-- ```options``` (optional) properties
+- ```options``` properties include --
   ```useArgs``` (boolean): When set to ```true``` implies supplied methods take in parameters.
 
   ```mixed``` (boolean): When set to ```true``` implies supplied methods may take in parameters or NOT.
