@@ -2,7 +2,7 @@
 	"name": "a-sequencer",
 	"version": "1.0.0",
 	"description": "A-sequencer is a light-weight promise based library  for executing methods that return promises. It ensures the methods are executed in the order they were provided. It allows methods that return promises to be chained in a manner that either all runs to completion (in order) or the execution gets terminated. It supports promise returning methods that take arguments and those without arguments.",
-	"main": "main.js",
+	"main": "index.js",
 	"scripts": {
 		"test": "nyc mocha ./test/integration/*.spec.js ./test/unit/**/*.spec.js --timeout 10000"
 	},
