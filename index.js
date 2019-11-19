@@ -1,44 +1,65 @@
-const { processPromisesWithArgs, processPromisesWithNoArgs, processPromises } = require('./util/utils');
+const {
+    processPromisesWithArgs,
+    processPromisesWithNoArgs,
+    processPromises,
+    processPromisesAndChainResults
+} = require('./util/utils');
 
 function Sequencer(options = {}) {
-	const _options = options;
-	if (!_options.useArgs || typeof _options.useArgs !== 'boolean') {
-		_options.useArgs = false;
-	}
+    const _options = options;
+    if (!_options.useArgs || typeof _options.useArgs !== 'boolean') {
+        _options.useArgs = false;
+    }
 
-	if (!_options.mixed || typeof _options.mixed !== 'boolean') {
-		_options.mixed = false;
-	}
+    if (!_options.mixed || typeof _options.mixed !== 'boolean') {
+        _options.mixed = false;
+    }
 
-	this.runSequence = function(promises) {
-		if (_options.mixed) {
-			return processPromises(promises);
-		} else if (_options.useArgs) {
-			return processPromisesWithArgs(promises);
-		} else {
-			return processPromisesWithNoArgs(promises);
-		}
-	};
+    if (!_options.chainResult || typeof _options.chainResult !== 'boolean') {
+        _options.chainResult = false;
+    }
 
-	this.getUseArgs = function() {
-		return _options.useArgs;
-	};
+    this.runSequence = function(promises) {
+        if (_options.mixed) {
+            return processPromises(promises);
+        } else if (_options.useArgs) {
+            return processPromisesWithArgs(promises);
+        } else if (_options.chainResult) {
+            return processPromisesAndChainResults(promises);
+        } else {
+            return processPromisesWithNoArgs(promises);
+        }
+    };
 
-	this.getMixed = function() {
-		return _options.mixed;
-	};
+    this.getUseArgs = function() {
+        return _options.useArgs;
+    };
 
-	this.setUseArgs = function(value) {
-		if (typeof value === 'boolean') {
-			_options.useArgs = value;
-		}
-	};
+    this.getMixed = function() {
+        return _options.mixed;
+    };
 
-	this.setMixed = function(value) {
-		if (typeof value === 'boolean') {
-			_options.mixed = value;
-		}
-	};
+    this.getChainResult = function() {
+        return _options.chainResult;
+    };
+
+    this.setUseArgs = function(value) {
+        if (typeof value === 'boolean') {
+            _options.useArgs = value;
+        }
+    };
+
+    this.setMixed = function(value) {
+        if (typeof value === 'boolean') {
+            _options.mixed = value;
+        }
+    };
+
+    this.setChainResult = function(value) {
+        if (typeof value === 'boolean') {
+            _options.chainResult = value;
+        }
+    };
 }
 
 module.exports = Sequencer;
