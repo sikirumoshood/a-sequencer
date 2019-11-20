@@ -1,4 +1,9 @@
-const { processPromisesWithArgs, processPromisesWithNoArgs, processPromises } = require('./util/utils');
+const {
+	processPromisesWithArgs,
+	processPromisesWithNoArgs,
+	processPromises,
+	processPromisesAndChainResults
+} = require('./util/utils');
 
 function Sequencer(options = {}) {
 	const _options = options;
@@ -10,8 +15,14 @@ function Sequencer(options = {}) {
 		_options.mixed = false;
 	}
 
+	if (!_options.chainResult || typeof _options.chainResult !== 'boolean') {
+		_options.chainResult = false;
+	}
+
 	this.runSequence = function(promises) {
-		if (_options.mixed) {
+		if (_options.chainResult) {
+			return processPromisesAndChainResults(promises);
+		} else if (_options.mixed) {
 			return processPromises(promises);
 		} else if (_options.useArgs) {
 			return processPromisesWithArgs(promises);
@@ -28,6 +39,10 @@ function Sequencer(options = {}) {
 		return _options.mixed;
 	};
 
+	this.getChainResult = function() {
+		return _options.chainResult;
+	};
+
 	this.setUseArgs = function(value) {
 		if (typeof value === 'boolean') {
 			_options.useArgs = value;
@@ -37,6 +52,12 @@ function Sequencer(options = {}) {
 	this.setMixed = function(value) {
 		if (typeof value === 'boolean') {
 			_options.mixed = value;
+		}
+	};
+
+	this.setChainResult = function(value) {
+		if (typeof value === 'boolean') {
+			_options.chainResult = value;
 		}
 	};
 }
